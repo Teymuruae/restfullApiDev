@@ -10,11 +10,9 @@ import io.restassured.specification.ResponseSpecification;
 import org.aeonbits.owner.ConfigFactory;
 
 public class Spec {
-    private static ApiConfig apiConfig = ConfigFactory.create(ApiConfig.class, System.getProperties());
 
     private static RequestSpecification request() {
         return new RequestSpecBuilder()
-                .setBaseUri(apiConfig.getBaseUrl())
                 .setContentType(ContentType.JSON)
                 .build();
     }

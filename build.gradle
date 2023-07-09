@@ -58,3 +58,22 @@ tasks.withType(Test) {
 test {
     useJUnitPlatform()
 }
+
+task get_test(type: Test) {
+    useJUnitPlatform{
+        includeTags("get")
+    }
+}
+
+
+task post_test(type: Test) {
+    useJUnitPlatform {
+        includeTags("post")
+    }
+}
+
+task update_test(type: Test) {
+    useJUnitPlatform {
+        includeTags("update")
+    }
+}
