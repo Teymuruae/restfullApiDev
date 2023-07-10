@@ -1,7 +1,7 @@
 package diplomApi.tests;
 
 import diplomApi.configs.ApiConfig;
-import diplomApi.configs.CustomApiListener;
+import diplomApi.helpers.CustomApiListener;
 import io.restassured.RestAssured;
 import org.aeonbits.owner.ConfigFactory;
 import org.junit.jupiter.api.BeforeAll;
