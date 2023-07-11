@@ -19,16 +19,16 @@ public class GetTest extends TestBase {
 
     @DisplayName("Проверка поля по одному id")
     @Test
-    void oneIdValuesTest(){
+    void oneIdValuesTest() {
         Response response = getMethods.getListOfAllObjectsResponse(testData.getId7Paht());
-        String actualCpuModel = response.path("data.find {it.'Hard disk size' == '1 TB'}.'CPU model'" );
+        String actualCpuModel = response.path("data.find {it.'Hard disk size' == '1 TB'}.'CPU model'");
         Assertions.assertEquals(testData.getExpectedCpuModel(), actualCpuModel);
     }
 
     @DisplayName("Проверка значений по всем id")
     @Test
     void getListOfAllObjectsTest() {
-        ListOfAllObjectsResponse[] response = getMethods.getListOfAllObjects("" );
+        ListOfAllObjectsResponse[] response = getMethods.getListOfAllObjects("");
         Assertions.assertAll(
                 () -> Assertions.assertEquals(testData.getExpectedCapacityGB(), response[2].getData().getCapacityGB()),
                 () -> Assertions.assertEquals(testData.getExpectedPrice(), response[11].getData().getPrice2()),
@@ -40,6 +40,6 @@ public class GetTest extends TestBase {
     @Test
     void getListOfObjectsByIdsAppleNameTest() {
         ListOfAllObjectsResponse[] response = getMethods.getListOfAllObjects(testData.getIdsPath());
-       Arrays.asList(response).forEach(x -> Assertions.assertTrue(x.getName().contains("Apple")));
+        Arrays.asList(response).forEach(x -> Assertions.assertTrue(x.getName().contains("Apple")));
     }
 }

@@ -6,7 +6,6 @@ import diplomApi.pojo.requests.UpdateObjectRequest;
 import diplomApi.pojo.requests.UpdateObjectRequestData;
 import diplomApi.pojo.responses.UpdateObjectResponse;
 import diplomApi.tests.datas.PostData;
-import io.restassured.response.Response;
 import org.apache.http.HttpStatus;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
@@ -14,23 +13,12 @@ import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import spec.Spec;
 
-import java.util.Map;
-
 @Tag("update")
 public class UpdateTest extends TestBase {
 
-    UpdateMethods updateMethods = new UpdateMethods();
-    PostData postData = new PostData();
-    PostMethods postMethods = new PostMethods();
-
-    public String postObject() {
-        Spec.install(HttpStatus.SC_OK);
-        Map<String, ?> body = postData.postBody(postData.getNameValue(), postData.getYearValue(), postData.getPriceValue(),
-                postData.getCpuModelValue(), postData.getHardDiskSizeValue());
-        Response response = postMethods.addObject(body);
-        return response.path("id");
-
-    }
+    private UpdateMethods updateMethods = new UpdateMethods();
+    private PostData postData = new PostData();
+    private PostMethods postMethods = new PostMethods();
 
     @DisplayName("Проверка редактирования объекта")
     @Test
@@ -40,7 +28,7 @@ public class UpdateTest extends TestBase {
                 postData.getCpuModelValue(), postData.getHardDiskSizeValue(), postData.getColorValue());
 
         UpdateObjectRequest body = new UpdateObjectRequest(postData.getNameValue(), preBody);
-        String id = postObject();
+        String id = postMethods.postObject();
         UpdateObjectResponse response = updateMethods.updateObject(body, id);
 
         Assertions.assertAll(

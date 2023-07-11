@@ -15,8 +15,8 @@ import java.util.Map;
 @Tag("post")
 public class PostTest extends TestBase {
 
-    PostMethods postMethods = new PostMethods();
-    PostData postData = new PostData();
+    private PostMethods postMethods = new PostMethods();
+    private PostData postData = new PostData();
 
     @DisplayName("Проверка добавления объекта")
     @Test

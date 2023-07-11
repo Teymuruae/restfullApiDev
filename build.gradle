@@ -77,3 +77,9 @@ task update_test(type: Test) {
         includeTags("update")
     }
 }
+
+task delete_test(type: Test) {
+    useJUnitPlatform {
+        includeTags("delete")
+    }
+}
