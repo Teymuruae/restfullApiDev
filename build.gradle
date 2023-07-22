@@ -10,31 +10,26 @@ repositories {
     mavenCentral()
 }
 
-compileJava {
-    options.encoding = 'UTF-8'
-}
 compileTestJava {
     options.encoding = 'UTF-8'
 }
 
 allure {
     report {
-        version.set("2.17.3") //версия Allure Report (https://github.com/allure-framework/allure2)
+        version.set("2.17.3")
     }
     adapter {
-        aspectjWeaver.set(true) // обработка аннотации @Step
+        aspectjWeaver.set(true)
         frameworks {
             junit5 {
-                adapterVersion.set("2.17.3") //версия Allure JUnit5 (https://github.com/allure-framework/allure-java)
+                adapterVersion.set("2.17.3")
             }
         }
     }
 }
 
-
 dependencies {
     testImplementation('org.junit.jupiter:junit-jupiter:5.8.1',
-
             'io.rest-assured:rest-assured:5.3.1',
             'com.fasterxml.jackson.core:jackson-databind:2.15.1',
             'org.aeonbits.owner:owner:1.0.12',
@@ -42,7 +37,6 @@ dependencies {
             "org.slf4j:slf4j-simple:2.0.7",
             'io.qameta.allure:allure-rest-assured:2.20.1'
     )
-    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
 }
 
 tasks.withType(Test) {
@@ -64,7 +58,6 @@ task get_test(type: Test) {
         includeTags("get")
     }
 }
-
 
 task post_test(type: Test) {
     useJUnitPlatform {

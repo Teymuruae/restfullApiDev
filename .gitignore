@@ -5,3 +5,5 @@ gradlew
 gradlew.bat
 settings.gradle
 gradle
+notifications/config.json
+notifications/draft.txt
